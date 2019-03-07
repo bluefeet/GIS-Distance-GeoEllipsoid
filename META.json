@@ -67,10 +67,10 @@
          "web" : "https://github.com/bluefeet/GIS-Distance-GeoEllipsoid"
       }
    },
-   "version" : "0.09",
+   "version" : "0.10",
    "x_authority" : "cpan:BLUEFEET",
    "x_contributors" : [
-      "Aran Deltac <bluefeet@gmail.com>"
+      "Aran Clary Deltac <bluefeet@gmail.com>"
    ],
    "x_serialization_backend" : "JSON::PP version 4.02",
    "x_static_install" : 1

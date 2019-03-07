@@ -56,8 +56,22 @@
       }
    },
    "release_status" : "unstable",
+   "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/bluefeet/GIS-Distance-GeoEllipsoid/issues"
+      },
+      "homepage" : "https://github.com/bluefeet/GIS-Distance-GeoEllipsoid",
+      "repository" : {
+         "type" : "git",
+         "url" : "git://github.com/bluefeet/GIS-Distance-GeoEllipsoid.git",
+         "web" : "https://github.com/bluefeet/GIS-Distance-GeoEllipsoid"
+      }
+   },
    "version" : "0.09",
    "x_authority" : "cpan:BLUEFEET",
+   "x_contributors" : [
+      "Aran Deltac <bluefeet@gmail.com>"
+   ],
    "x_serialization_backend" : "JSON::PP version 4.02",
    "x_static_install" : 1
 }

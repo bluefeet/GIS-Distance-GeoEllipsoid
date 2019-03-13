@@ -42,7 +42,7 @@ GIS::Distance::GeoEllipsoid - Geo::Ellipsoid distance calculations.
     # Use the default WGS84 ellipsoid:
     my $gis = GIS::Distance->new( 'GeoEllipsoid' );
     
-    # Set to a custom ellipsoid:
+    # Set the ellipsoid:
     my $gis = GIS::Distance->new( 'GeoEllipsoid', 'NAD27' );
 
 =head1 DESCRIPTION

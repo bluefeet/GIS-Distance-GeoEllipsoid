@@ -54,27 +54,16 @@ is used which in turn interfaces with the various formula modules.
 
 =head1 ARGUMENTS
 
-An optional argument may be passed which must be, as shown in the
-L</SYNOPSIS>, an ellipsoid name as defined at
-L<Geo::Ellipsoid/DEFINED ELLIPSOIDS>.
+An optional argument may be passed which, if set, must be an ellipsoid
+name as defined at L<Geo::Ellipsoid/DEFINED ELLIPSOIDS>.  See the
+L</SYNOPSIS> for an example of setting this argument.
 
-Otherwise the default, C<WGS84>, will be used.
-
-=head1 FORMULA
-
-This module is just a thin wrapper, so go see L<Geo::Ellipsoid> for
-details about how it works.
-
-=head1 SEE ALSO
-
-L<GIS::Distance>
-
-L<Geo::Ellipsoid>
+Otherwise the default ellipsoid, C<WGS84>, will be used.
 
 =head1 SUPPORT
 
-Please submit bugs and feature requests to the GIS-Distance-GeoEllipsoid
-GitHub issue tracker:
+Please submit bugs and feature requests to the
+GIS-Distance-GeoEllipsoid GitHub issue tracker:
 
 L<https://github.com/bluefeet/GIS-Distance-GeoEllipsoid/issues>
 

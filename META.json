@@ -42,7 +42,7 @@
       },
       "runtime" : {
          "requires" : {
-            "GIS::Distance" : "0.11",
+            "GIS::Distance" : "0.16",
             "Geo::Ellipsoid" : "1.14",
             "namespace::clean" : "0.24",
             "perl" : "5.008001",

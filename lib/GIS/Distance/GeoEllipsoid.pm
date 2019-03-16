@@ -3,6 +3,8 @@ use 5.008001;
 use strictures 2;
 our $VERSION = '0.11';
 
+use parent 'GIS::Distance::Formula';
+
 use Geo::Ellipsoid;
 use namespace::clean;
 
@@ -15,10 +17,11 @@ my $ellipsoid_args = {
     bearing        => 0,
 };
 
-sub distance {
+sub _distance {
     my $ellipsoid = (@_ == 5) ? shift() : undef;
 
     $ellipsoid ||= 'WGS84';
+    return $ellipsoid->range( @_ ) if $ellipsoid->can('new');
 
     my $instance = $cache->{$ellipsoid} ||= Geo::Ellipsoid->new(
         %$ellipsoid_args,

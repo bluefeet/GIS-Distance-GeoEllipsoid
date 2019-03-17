@@ -17,15 +17,19 @@ my $gis = GIS::Distance->new( 'GeoEllipsoid', 'NAD27' );
 This module is a wrapper around [Geo::Ellipsoid](https://metacpan.org/pod/Geo::Ellipsoid) for [GIS::Distance](https://metacpan.org/pod/GIS::Distance).
 
 Normally this module is not used directly.  Instead [GIS::Distance](https://metacpan.org/pod/GIS::Distance)
-is used which in turn interfaces with the various formula modules.
+is used which in turn interfaces with the various formula classes.
 
-# ARGUMENTS
+# OPTIONAL ARGUMENTS
 
-An optional argument may be passed which, if set, must be an ellipsoid
-name as defined at ["DEFINED ELLIPSOIDS" in Geo::Ellipsoid](https://metacpan.org/pod/Geo::Ellipsoid#DEFINED-ELLIPSOIDS).  See the
-["SYNOPSIS"](#synopsis) for an example of setting this argument.
+## ellipsoid
 
-Otherwise the default ellipsoid, `WGS84`, will be used.
+```perl
+my $gis = GIS::Distance->new( 'GeoEllipsoid', 'NAD27' );
+```
+
+Pass the name of an ellipsoid, per ["DEFINED ELLIPSOIDS" in Geo::Ellipsoid](https://metacpan.org/pod/Geo::Ellipsoid#DEFINED-ELLIPSOIDS).
+
+If not set the default ellipsoid, `WGS84`, will be used.
 
 # SUPPORT
 

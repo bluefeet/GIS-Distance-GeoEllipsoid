@@ -8,27 +8,52 @@ use parent 'GIS::Distance::Formula';
 use Geo::Ellipsoid;
 use namespace::clean;
 
-my $cache = {};
-
 my $ellipsoid_args = {
+    ellipsoid      => 'WGS84',
     units          => 'degrees' ,
     distance_units => 'kilometer',
     longitude      => 0,
     bearing        => 0,
 };
 
+{
+    my $default;
+
+    sub _default_ellipsoid {
+        $default ||= Geo::Ellipsoid->new( %$ellipsoid_args );
+        return $default;
+    }
+}
+
+sub BUILDARGS {
+    my $class = shift;
+
+    if (@_ == 1 and !ref($_[0])) {
+        return {
+            ellipsoid => Geo::Ellipsoid->new(
+                %$ellipsoid_args,
+                ellipsoid => $_[0],
+            ),
+        };
+    }
+
+    return $class->SUPER::BUILDARGS( @_ );
+}
+
+sub BUILD {
+    my ($self) = @_;
+
+    $self->{ellipsoid} ||= _default_ellipsoid();
+
+    return;
+}
+
 sub _distance {
-    my $ellipsoid = (@_ == 5) ? shift() : undef;
+    my $self = $GIS::Distance::Formula::SELF;
 
-    $ellipsoid ||= 'WGS84';
-    return $ellipsoid->range( @_ ) if $ellipsoid->can('new');
+    my $ellipsoid = $self ? $self->{ellipsoid} : _default_ellipsoid();
 
-    my $instance = $cache->{$ellipsoid} ||= Geo::Ellipsoid->new(
-        %$ellipsoid_args,
-        ellipsoid => $ellipsoid,
-    );
-
-    return $instance->range( @_ );
+    return $ellipsoid->range( @_ );
 }
 
 1;
@@ -53,15 +78,17 @@ GIS::Distance::GeoEllipsoid - Geo::Ellipsoid distance calculations.
 This module is a wrapper around L<Geo::Ellipsoid> for L<GIS::Distance>.
 
 Normally this module is not used directly.  Instead L<GIS::Distance>
-is used which in turn interfaces with the various formula modules.
+is used which in turn interfaces with the various formula classes.
 
-=head1 ARGUMENTS
+=head1 OPTIONAL ARGUMENTS
 
-An optional argument may be passed which, if set, must be an ellipsoid
-name as defined at L<Geo::Ellipsoid/DEFINED ELLIPSOIDS>.  See the
-L</SYNOPSIS> for an example of setting this argument.
+=head2 ellipsoid
 
-Otherwise the default ellipsoid, C<WGS84>, will be used.
+    my $gis = GIS::Distance->new( 'GeoEllipsoid', 'NAD27' );
+
+Pass the name of an ellipsoid, per L<Geo::Ellipsoid/DEFINED ELLIPSOIDS>.
+
+If not set the default ellipsoid, C<WGS84>, will be used.
 
 =head1 SUPPORT
 

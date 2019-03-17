@@ -42,15 +42,17 @@
       },
       "runtime" : {
          "requires" : {
-            "GIS::Distance" : "0.16",
+            "GIS::Distance::Formula" : "0.17",
             "Geo::Ellipsoid" : "1.14",
             "namespace::clean" : "0.24",
+            "parent" : "0",
             "perl" : "5.008001",
             "strictures" : "2.000000"
          }
       },
       "test" : {
          "requires" : {
+            "GIS::Distance" : "0.17",
             "Test2::V0" : "0.000094"
          }
       }

@@ -99,7 +99,7 @@ L<https://github.com/bluefeet/GIS-Distance-GeoEllipsoid/issues>
 
 =head1 AUTHORS
 
-    Aran Clary Deltac <bluefeet@cpan.org>
+    Aran Clary Deltac <bluefeet@gmail.com>
 
 =head1 LICENSE
 
